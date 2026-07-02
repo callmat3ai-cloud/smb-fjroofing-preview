@@ -754,19 +754,46 @@
       }
       
       /* --- Google Maps Embed --- */
+      .map-section {
+        margin-top: 2rem;
+      }
       .map-wrapper {
+        position: relative;
         border-radius: 16px;
         overflow: hidden;
         border: 1px solid var(--border);
         height: 100%;
         min-height: 350px;
         box-shadow: 0 10px 40px rgba(10, 22, 40, 0.04);
+        background-color: var(--border);
       }
       .map-wrapper iframe {
+        position: relative;
         display: block;
         width: 100%;
         height: 100%;
         border: 0;
+        z-index: 2;
+      }
+      .map-fallback {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #f4f6f9;
+        color: var(--text);
+        text-align: center;
+        padding: 20px;
+        z-index: 1;
+      }
+      .map-fallback a {
+        color: var(--accent);
+        text-decoration: underline;
+        font-weight: 600;
       }
       
       /* --- Prefers Reduced Motion Rule --- */
@@ -1600,14 +1627,17 @@
               </div>
             </div>
             
-            <div class="map-wrapper" style="margin-top: 32px;">
+            <div class="map-wrapper" style="margin-top: 2rem;">
               <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m18!1m2!1s0x863f5c7eb3438e1b%3A0xe1043328e18b82ff!2s2011%20Broadway%20St%2C%20Galveston%2C%20TX%2077550!5e0!3m2!1sen!2sus!4v1719532452322!5m2!1sen!2sus" 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3479.5!2d-94.79!3d29.30!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x863f5c7eb3438e1b%3A0xe1043328e18b82ff!2s2011%20Broadway%20St%2C%20Galveston%2C%20TX%2077550!5e0!3m2!1sen!2sus!5e0!3m2!1sen!2sus16!4v1751500000000!5m1!1e1!5m1!1e2!5m1!1e3!6m1!1e2!7m2!1i1680!2i795!4f13.1!6m6!1m3!1m2!1i1024!2i768!2m3!1i1024!2i768!20m2!1i768!2i795!3m1!2i0!5m1!1e4!5m1!1e5!5m1!1e6!5m1!1e10!5m1!1e12!5m1!1e14" 
                 allowfullscreen="" 
                 loading="lazy" 
-                referrerpolicy="no-referrer-when-downgrade"
-                title="FJ Roofing Location Map in Galveston TX">
+                referrerpolicy="strict-origin-when-cross-origin"
+                title="FJ Roofing — 2011 Broadway St, Galveston TX 77550">
               </iframe>
+              <div class="map-fallback">
+                <p>Can't load the map? <a href="https://maps.google.com/?q=2011+Broadway+St,+Galveston,+TX+77550" target="_blank" rel="noopener noreferrer">Open FJ Roofing on Google Maps</a></p>
+              </div>
             </div>
           </div>
           
